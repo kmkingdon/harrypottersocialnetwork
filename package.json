@@ -1,0 +1,17 @@
+{
+  "name": "gameofthrones",
+  "version": "1.0.0",
+  "description": "Fire and Ice Social Network",
+  "main": "./app/app.js",
+  "scripts": {
+    "start": "node ./app/app.js",
+    "dev": "nodemon ./app/app.js",
+    "test": "npx cypress run --config videoRecording=false,screenshotOnHeadlessFailure=false"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "hbs": "^4.0.1"
+  }
+}
