@@ -1,7 +1,7 @@
 {
-  "name": "gameofthrones",
+  "name": "magicalnetwork",
   "version": "1.0.0",
-  "description": "Fire and Ice Social Network",
+  "description": "Harry Potter Social Network",
   "main": "./app/app.js",
   "scripts": {
     "start": "node ./app/app.js",
@@ -11,7 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "hbs": "^4.0.1"
+    "hbs": "^4.0.1",
+    "knex": "^0.14.2",
+    "pg": "^7.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
   }
 }
