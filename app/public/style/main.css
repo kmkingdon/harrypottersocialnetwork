@@ -4,9 +4,13 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: #999999; }
+  background-color: #999999;
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 20vh 70vh 10vh; }
   body header {
-    height: 20vh; }
+    grid-row: 1/2;
+    grid-column: 1/2; }
     body header a {
       width: 100%;
       height: 100%;
@@ -19,69 +23,73 @@ body {
         height: 90%;
         margin: 1rem 0rem; }
   body main {
-    height: 80vh;
+    grid-row: 2/3;
+    grid-column: 1/2;
     background-color: white; }
+  body footer {
+    grid-row: 3/4;
+    grid-column: 1/2;
+    background-color: #999999;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center; }
+    body footer .footer-link {
+      width: 40%;
+      height: 65%;
+      background-color: white;
+      border: solid black 5px; }
+      body footer .footer-link a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center; }
+        body footer .footer-link a img {
+          height: 90%; }
 
-.landing-image {
+#landing-image {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 5% 30% 30% 30% 5%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
   background-image: url("../assets/hogwartsbackground.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
-
-.about {
-  grid-row: 2/3;
-  grid-column: 1/2; }
-
-.all-members {
-  grid-row: 3/4;
-  grid-column: 1/2; }
-
-.search {
-  grid-row: 4/5;
-  grid-column: 1/2; }
-
-.about, .all-members, .search {
-  width: 80%;
-  height: 100%;
-  align-self: center;
-  justify-self: center;
-  background-image: url("../assets/crest.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain; }
-  .about a, .all-members a, .search a {
-    width: 100%;
-    height: 100%;
+  #landing-image div {
+    width: 90%;
+    height: 70%;
+    margin-top: 2rem;
+    background-image: url("../assets/crest.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center; }
-    .about a img, .all-members a img, .search a img {
-      width: 28%;
-      height: 20%;
+    #landing-image div img {
+      width: 60%;
+      margin-bottom: 2.5rem; }
+    #landing-image div p {
+      width: 50%;
       text-align: center;
-      vertical-align: center; }
+      font-size: 1rem; }
 
 .outter-container {
   width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 90% 10%; }
+  height: 100%; }
 
 #inner-container {
-  grid-row: 1/2;
-  grid-column: 1/2;
-  height: 100%;
   width: 100%;
+  height: 100%;
   overflow: scroll; }
 
-#member-container {
+.member-container {
   height: 100px;
   width: 100%;
   display: grid;
@@ -90,27 +98,27 @@ body {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
   margin: 1rem 0rem;
   border-radius: 5px; }
-  #member-container img {
+  .member-container img {
     grid-row: 1/3;
     grid-column: 1/2;
-    width: 65%;
+    width: 60%;
     height: 80%;
     justify-self: center;
     align-self: center; }
-  #member-container h1 {
+  .member-container h1 {
     grid-row: 1/2;
     grid-column: 2/3;
     font-size: 1.3rem;
     font-weight: bold;
     justify-self: center;
     align-self: center; }
-  #member-container h2 {
+  .member-container h2 {
     grid-row: 2/3;
     grid-column: 2/3;
     font-size: 1rem;
     justify-self: center;
     align-self: center; }
-  #member-container a {
+  .member-container a {
     grid-row: 1/3;
     grid-column: 3/4;
     width: 100%;
@@ -118,45 +126,21 @@ body {
     flex-flow: column;
     justify-content: center;
     align-items: center; }
-  #member-container #link {
+  .member-container #link {
     width: 50%;
     height: 50%; }
-
-.create-container {
-  grid-row: 2/3;
-  grid-column: 1/2;
-  background-color: #999999;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-around;
-  align-items: center; }
-
-#create {
-  width: 40%;
-  height: 65%;
-  background-color: white;
-  border: solid black 5px; }
-  #create a {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center; }
-    #create a img {
-      height: 90%; }
 
 #form {
   grid-row: 1/2;
   grid-column: 1/2;
-  height: 100%;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center; }
-  #form p {
-    font-size: 1.5rem;
+  #form img {
+    width: 50%;
     margin-top: 1rem; }
   #form form {
     height: 20%;
@@ -171,8 +155,131 @@ body {
       border: solid black 1px; }
     #form form input:last-child {
       margin-left: 2rem; }
-    #form form #staff {
+    #form form .submit {
       margin-left: 0rem; }
+
+#profile-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 15% 15% 50% 20%; }
+  #profile-container .avatar {
+    grid-row: 1/3;
+    grid-column: 1/2;
+    width: auto;
+    height: 90%;
+    justify-self: center;
+    align-self: center; }
+  #profile-container .details {
+    grid-row: 3/5;
+    grid-column: 1/2;
+    width: 100%;
+    height: 100%;
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% 40% 40%; }
+    #profile-container .details .name, #profile-container .details .info, #profile-container .details .wand {
+      width: 90%;
+      height: 90%;
+      justify-self: center;
+      align-self: center;
+      background-color: white;
+      margin-top: .3rem; }
+      #profile-container .details .name img, #profile-container .details .info img, #profile-container .details .wand img {
+        height: 15%;
+        margin: .3rem 0 0rem .3rem; }
+    #profile-container .details .name {
+      grid-row: 1/2;
+      grid-column: 1/2;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center; }
+      #profile-container .details .name h1 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-align: center; }
+    #profile-container .details .info {
+      grid-row: 2/3;
+      grid-column: 1/2; }
+      #profile-container .details .info h2 {
+        font-size: .7rem;
+        text-align: left;
+        margin-left: .5rem; }
+    #profile-container .details .wand {
+      grid-row: 3/4;
+      grid-column: 1/2; }
+      #profile-container .details .wand h2 {
+        font-size: .7rem;
+        text-align: left;
+        margin-left: .5rem; }
+  #profile-container .house-points {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 1rem; }
+    #profile-container .house-points img {
+      width: 10%;
+      height: 50%; }
+    #profile-container .house-points h1 {
+      font-size: 1.5rem; }
+  #profile-container .images {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    justify-self: center;
+    align-self: center;
+    width: 80%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center; }
+    #profile-container .images img {
+      width: 30%;
+      height: 100%; }
+  #profile-container .wall {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; }
+    #profile-container .wall .posts {
+      width: 95%;
+      height: 95%;
+      border: solid black 2px; }
+  #profile-container .comment {
+    grid-row: 4/5;
+    grid-column: 2/3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center; }
+    #profile-container .comment form {
+      width: 95%;
+      height: 95%; }
+      #profile-container .comment form label {
+        font-size: .9rem; }
+      #profile-container .comment form textarea {
+        width: 100%;
+        height: 30%;
+        font-size: 1rem;
+        border: solid black 2px; }
+      #profile-container .comment form input {
+        width: 100%;
+        font-size: .75rem;
+        border: solid black 2px; }
+        #profile-container .comment form input #submit {
+          background-color: rgba(0, 0, 0, 0.3); }
 
 .hidden {
   display: none; }

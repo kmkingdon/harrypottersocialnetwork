@@ -1,6 +1,7 @@
 const submitName = document.getElementById('submit-name');
 const submitHouse = document.getElementById('submit-house');
 const submitStaff = document.getElementById('submit-staff');
+const submitAll = document.getElementById('submit-allmembers');
 const form = document.getElementById('form');
 const nameSelect= document.getElementById('name');
 const container = document.getElementById('inner-container');
@@ -55,7 +56,6 @@ submitStaff.addEventListener('submit', displayByStaff);
 
 function displayByStaff(event) {
   event.preventDefault()
-  house = event.target[0].value;
   form.style.display = "none";
   container.classList.remove('hidden');
   fetch("http://hp-api.herokuapp.com/api/characters")
@@ -73,10 +73,23 @@ function createMemberListByStaff(response) {
   staffArray.forEach(createListings)
 }
 
+submitAll.addEventListener('submit', displayAllMembers);
+
+function displayAllMembers(event) {
+  event.preventDefault()
+  form.style.display = "none";
+  container.classList.remove('hidden');
+  fetch("http://hp-api.herokuapp.com/api/characters")
+    .then(response => response.json())
+    .then(response => {
+      response.forEach(createListings)
+    });
+}
+
 
 function createListings(item) {
   let memberContainer= document.createElement('div');
-  memberContainer.id = "member-container";
+  memberContainer.classList.add("member-container");
   let photo= document.createElement('img');
   photo.src = item.image;
   memberContainer.appendChild(photo)

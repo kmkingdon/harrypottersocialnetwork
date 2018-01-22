@@ -25,6 +25,10 @@ app.get("/search", (request, response) => {
     response.render("search");
 });
 
+app.get("/profile", (request, response) => {
+    response.render("profile");
+});
+
 
 
 // API Routes
