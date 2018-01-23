@@ -4,15 +4,15 @@ const submitStaff = document.getElementById('submit-staff');
 const submitAll = document.getElementById('submit-allmembers');
 const form = document.getElementById('form');
 const nameSelect= document.getElementById('name');
-const container = document.getElementById('inner-container');
+const container = document.getElementById('profile-list-container');
 let house;
 
 
 function updateNames() {
-  fetch("http://hp-api.herokuapp.com/api/characters")
+  fetch("https://harrypotterdb.herokuapp.com/profiles")
     .then(response => response.json())
     .then(response => {
-      response.forEach(item => {
+      response.profiles.forEach(item => {
         let select= document.createElement('option');
         select.value= item.name;
         select.innerHTML= item.name;
@@ -37,16 +37,16 @@ function displayByHouse(event) {
   house = event.target[0].value;
   form.style.display = "none";
   container.classList.remove('hidden');
-  fetch("http://hp-api.herokuapp.com/api/characters")
+  fetch("https://harrypotterdb.herokuapp.com/profiles")
     .then(response => response.json())
     .then(createMemberListByHouse);
 }
 
 function createMemberListByHouse(response) {
   let houseArray = [];
-  for (var i = 0; i < response.length; i++) {
-    if(response[i].house === house) {
-      houseArray.push(response[i])
+  for (var i = 0; i < response.profiles.length; i++) {
+    if(response.profiles[i].house === house) {
+      houseArray.push(response.profiles[i])
     }
   }
   houseArray.forEach(createListings)
@@ -58,16 +58,16 @@ function displayByStaff(event) {
   event.preventDefault()
   form.style.display = "none";
   container.classList.remove('hidden');
-  fetch("http://hp-api.herokuapp.com/api/characters")
+  fetch("https://harrypotterdb.herokuapp.com/profiles")
     .then(response => response.json())
     .then(createMemberListByStaff);
 }
 
 function createMemberListByStaff(response) {
   let staffArray = [];
-  for (var i = 0; i < response.length; i++) {
-    if(response[i].hogwartsStaff === true) {
-      staffArray.push(response[i])
+  for (var i = 0; i < response.profiles.length; i++) {
+    if(response.profiles[i].hogwartsStaff === true) {
+      staffArray.push(response.profiles[i])
     }
   }
   staffArray.forEach(createListings)

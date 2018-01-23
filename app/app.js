@@ -29,6 +29,10 @@ app.get("/profile", (request, response) => {
     response.render("profile");
 });
 
+app.get("/create", (request, response) => {
+    response.render("create");
+});
+
 
 
 // API Routes

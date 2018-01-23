@@ -1,3 +1,4 @@
+const getAPI = "https://harrypotterdb.herokuapp.com/profiles";
 const avatar= document.querySelector(".avatar");
 const nameSection= document.querySelector(".name");
 const details= document.querySelector(".details");
@@ -5,9 +6,11 @@ const info= document.querySelector(".info");
 const wand= document.querySelector(".wand");
 const house= document.getElementById('house');
 const patronus= document.getElementById('patronus');
+const comment= document.getElementById('comment');
 
 let name;
 let characterInfo = {};
+let id;
 
 function findProfileName() {
   let n= window.location.href.split("?")[1];
@@ -16,16 +19,19 @@ function findProfileName() {
 
 findProfileName();
 
-fetch("http://hp-api.herokuapp.com/api/characters")
+
+fetch(getAPI)
   .then(response => response.json())
   .then(findProfileData);
 
 function findProfileData(response) {
-  response.forEach(item => {
+  response.profiles.forEach(item => {
     if(item.name === name) {
       Object.assign(characterInfo, item);
     }
   })
+
+  id= characterInfo.id;
 
   let nameText = document.createElement("h1");
   nameText.innerHTML = characterInfo.name;
@@ -86,3 +92,30 @@ function findProfileData(response) {
         break;
   }
 }
+
+comment.addEventListener('submit', addComment);
+
+
+function addComment(event){
+  event.preventDefault();
+  let poster = event.target[0].value;
+  let post= event.target[1].value;
+  const comment= {};
+  comment[poster] = post;
+  sendComment(comment);
+  event.target.reset();
+}
+
+function sendComment(comment){
+  let putAPI = "https://harrypotterdb.herokuapp.com/profiles/" + id;
+
+  fetch(putAPI, {
+    method: "PUT",
+    body: JSON.stringify(comment),
+    headers: new Headers ({
+      "Content-Type": "application/json"
+    })
+  }).then(response => response.json()
+  .then(response => console.log(response))
+  .catch(console.error)
+)};
