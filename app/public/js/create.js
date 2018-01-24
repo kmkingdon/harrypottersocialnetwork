@@ -116,7 +116,7 @@ function pickHouse() {
         houseName.style.color= "green";
         break;
     case "Hufflepuff":
-        houseName.style.color= "yelloe";
+        houseName.style.color= "yellow";
         break;
     case "Ravenclaw":
         houseName.style.color= "blue";
@@ -246,7 +246,6 @@ function saveProfile(e) {
     "image": image
   }
   sendProfile(profile);
-  window.location= "https://hpsocialnetwork.herokuapp.com/search";
 }
 
 function sendProfile(profile){
@@ -259,4 +258,9 @@ function sendProfile(profile){
   }).then(response => response.json())
   .catch(error => console.error('Error:', error))
   .then(response => console.log('Success:', response))
+  .then(redirect);
 };
+
+function(redirect) {
+  window.location= "https://hpsocialnetwork.herokuapp.com/search";
+}
