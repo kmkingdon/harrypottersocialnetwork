@@ -261,6 +261,6 @@ function sendProfile(profile){
   .then(redirect);
 };
 
-function(redirect) {
+function redirect() {
   window.location= "https://hpsocialnetwork.herokuapp.com/search";
 }
