@@ -102,14 +102,25 @@ function addComment(event){
   event.preventDefault();
   const comment = new FormData(event.target);
   const message= {
-      "profiles": {
         "name": comment.get("name"),
         "comment": comment.get("comment"),
         "harrypotter_id": id
-      }
     }
   sendComment(message);
   event.target.reset();
+  addCommentToDOM(message);
+}
+
+function addCommentToDOM(message) {
+  let postBox = document.createElement('div');
+  postBox.classList.add('post');
+  let name = document.createElement('h4');
+  name.innerHTML= message.name;
+  postBox.appendChild(name);
+  let comment = document.createElement('p');
+  comment.innerHTML= message.comment;
+  postBox.appendChild(comment);
+  wall.appendChild(postBox)
 }
 
 function sendComment(message){
