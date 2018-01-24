@@ -1,4 +1,5 @@
-const getAPI = "https://harrypotterdb.herokuapp.com/profiles";
+const getAPI = "https://hpdb.herokuapp.com/profiles";
+const postAPI = "https://hpdb.herokuapp.com/comments";
 const avatar= document.querySelector(".avatar");
 const nameSection= document.querySelector(".name");
 const details= document.querySelector(".details");
@@ -7,6 +8,7 @@ const wand= document.querySelector(".wand");
 const house= document.getElementById('house');
 const patronus= document.getElementById('patronus');
 const comment= document.getElementById('comment');
+const wall = document.getElementById('posts');
 
 let name;
 let characterInfo = {};
@@ -98,24 +100,57 @@ comment.addEventListener('submit', addComment);
 
 function addComment(event){
   event.preventDefault();
-  let poster = event.target[0].value;
-  let post= event.target[1].value;
-  const comment= {};
-  comment[poster] = post;
-  sendComment(comment);
+  const comment = new FormData(event.target);
+  const message= {
+      "profiles": {
+        "name": comment.get("name"),
+        "comment": comment.get("comment"),
+        "harrypotter_id": id
+      }
+    }
+  sendComment(message);
   event.target.reset();
 }
 
-function sendComment(comment){
-  let putAPI = "https://harrypotterdb.herokuapp.com/profiles/" + id;
-
-  fetch(putAPI, {
-    method: "PUT",
-    body: JSON.stringify(comment),
+function sendComment(message){
+  fetch(postAPI , {
+    method: "POST",
+    mode: "cors",
+    body: JSON.stringify(message),
     headers: new Headers ({
       "Content-Type": "application/json"
     })
-  }).then(response => response.json()
-  .then(response => console.log(response))
-  .catch(console.error)
-)};
+  }).then(response => response.json())
+  .catch(error => console.error('Error:', error))
+  .then(response => console.log('Success:', response))
+};
+
+function updateWall(){
+  let comments = [];
+  fetch(postAPI)
+    .then(response => response.json())
+    .then(response => {
+      response.profiles.forEach(comment => {
+        if(comment.harrypotter_id === id){
+          comments.push(comment)
+        }
+      })
+      createWall(comments);
+    })
+}
+
+function createWall(comments) {
+  comments.forEach(item => {
+      let postBox = document.createElement('div');
+      postBox.classList.add('post');
+      let name = document.createElement('h4');
+      name.innerHTML= item.name;
+      postBox.appendChild(name);
+      let comment = document.createElement('p');
+      comment.innerHTML= item.comment;
+      postBox.appendChild(comment);
+      wall.appendChild(postBox)
+  })
+}
+
+updateWall();

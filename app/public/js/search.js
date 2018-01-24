@@ -1,3 +1,4 @@
+const getAPI = "https://hpdb.herokuapp.com/profiles";
 const submitName = document.getElementById('submit-name');
 const submitHouse = document.getElementById('submit-house');
 const submitStaff = document.getElementById('submit-staff');
@@ -9,7 +10,7 @@ let house;
 
 
 function updateNames() {
-  fetch("https://harrypotterdb.herokuapp.com/profiles")
+  fetch(getAPI)
     .then(response => response.json())
     .then(response => {
       response.profiles.forEach(item => {
@@ -37,7 +38,7 @@ function displayByHouse(event) {
   house = event.target[0].value;
   form.style.display = "none";
   container.classList.remove('hidden');
-  fetch("https://harrypotterdb.herokuapp.com/profiles")
+  fetch(getAPI)
     .then(response => response.json())
     .then(createMemberListByHouse);
 }
@@ -58,7 +59,7 @@ function displayByStaff(event) {
   event.preventDefault()
   form.style.display = "none";
   container.classList.remove('hidden');
-  fetch("https://harrypotterdb.herokuapp.com/profiles")
+  fetch(getAPI)
     .then(response => response.json())
     .then(createMemberListByStaff);
 }
@@ -79,10 +80,10 @@ function displayAllMembers(event) {
   event.preventDefault()
   form.style.display = "none";
   container.classList.remove('hidden');
-  fetch("http://hp-api.herokuapp.com/api/characters")
+  fetch(getAPI)
     .then(response => response.json())
     .then(response => {
-      response.forEach(createListings)
+      response.profiles.forEach(createListings)
     });
 }
 

@@ -277,17 +277,53 @@ body {
       height: 100%;
     }
   }
+
   .wall {
     grid-row: 3/4;
     grid-column: 2/3;
     @include flex-center;
     @include fill;
-    .posts {
-      width: 95%;
-      height: 95%;
-      border: solid black 2px;
+  }
+
+  #posts {
+    width: 95%;
+    height: 95%;
+    border: solid black 2px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .post {
+    width:95%;
+    height:15%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    border: solid black 1px;
+    border-radius: 1px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: space-between;
+    margin-top: .5rem;
+    h4{
+      font-size: .7rem;
+      color: hsl(0, 0%, 100%);
+      height: 100%;
+      width: 30%;
+      background-color: hsl(0, 0%, 60%);
+      text-align: center;
+      padding-top: .3rem;
+    }
+    p{
+      height: 100%;
+      width: 70%;
+      font-size: .7rem;
+      text-align: center;
+      padding-top: .3rem;
     }
   }
+
   .comment {
     grid-row: 4/5;
     grid-column: 2/3;
@@ -321,6 +357,7 @@ body {
   @include fill;
   img {
     width: 90%;
+    margin-top: 1rem;
   }
   form {
     width: 100%;
@@ -346,13 +383,19 @@ body {
 #create1{
   display: flex;
   flex-flow: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 #create2{
   display: none;
   flex-flow: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+#create3{
+  display: none;
+  flex-flow: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
