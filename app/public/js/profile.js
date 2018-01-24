@@ -14,6 +14,9 @@ let name;
 let characterInfo = {};
 let id;
 
+function displayAvatar() {
+  avatar.src = "../assets/avatar.jpg";
+}
 function findProfileName() {
   let n= window.location.href.split("?")[1];
   name= n.replace("%20", " ");
@@ -38,7 +41,11 @@ function findProfileData(response) {
   let nameText = document.createElement("h1");
   nameText.innerHTML = characterInfo.name;
   nameSection.appendChild(nameText);
-  avatar.src = characterInfo.image;
+  if(characterInfo.image === ""){
+    avatar.src = "../assets/avatar.jpg";
+  } else {
+    avatar.src = characterInfo.image;
+  }
   house.src= `../assets/houses/${characterInfo.house}.png`;
 
   let species= document.createElement("h2");

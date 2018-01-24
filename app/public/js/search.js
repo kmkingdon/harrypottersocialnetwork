@@ -87,12 +87,15 @@ function displayAllMembers(event) {
     });
 }
 
-
 function createListings(item) {
   let memberContainer= document.createElement('div');
   memberContainer.classList.add("member-container");
   let photo= document.createElement('img');
-  photo.src = item.image;
+  if(item.image === ""){
+    photo.src = "../assets/avatar.jpg";
+  } else {
+    photo.src = item.image;
+  }
   memberContainer.appendChild(photo)
   let name = document.createElement('h1');
   name.innerHTML= item.name;

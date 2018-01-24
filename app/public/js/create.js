@@ -246,6 +246,7 @@ function saveProfile(e) {
     "image": image
   }
   sendProfile(profile);
+  window.location= "https://hpsocialnetwork.herokuapp.com/search";
 }
 
 function sendProfile(profile){
