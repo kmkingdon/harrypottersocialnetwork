@@ -42,35 +42,35 @@ back1.addEventListener('click', goBack1);
 
 function goBack1(){
   create2.style.display = "none";
-  create1.style.display = "flex";
+  create1.style.display = "grid";
 }
 
 back2.addEventListener('click', goBack2);
 
 function goBack2(){
   create3.style.display = "none";
-  create2.style.display = "flex";
+  create2.style.display = "grid";
 }
 
 back3.addEventListener('click', goBack3);
 
 function goBack3(){
   create4.style.display = "none";
-  create3.style.display = "flex";
+  create3.style.display = "grid";
 }
 
 back4.addEventListener('click', goBack4);
 
 function goBack4(){
   create5.style.display = "none";
-  create4.style.display = "flex";
+  create4.style.display = "grid";
 }
 
 back5.addEventListener('click', goBack5);
 
 function goBack5(){
   create6.style.display = "none";
-  create5.style.display = "flex";
+  create5.style.display = "grid";
 }
 
 background.addEventListener('submit', saveBackground);
@@ -82,7 +82,7 @@ function saveBackground(e) {
   species= e.target[2].value;
   ancestry= e.target[3].value;
   create1.style.display = "none";
-  create2.style.display = "flex";
+  create2.style.display = "grid";
 }
 
 looks.addEventListener('submit', saveLooks);
@@ -94,7 +94,7 @@ function saveLooks(e) {
   hairColour= e.target[2].value;
   image= e.target[3].value;
   create2.style.display = "none";
-  create3.style.display = "flex";
+  create3.style.display = "grid";
 }
 
 sort.addEventListener('click', pickHouse);
@@ -106,8 +106,8 @@ function pickHouse() {
   let houseName = document.createElement('h3');
   houseName.innerHTML= house;
   houseDisplay.appendChild(houseName);
-  sort.classList.add('hidden');
-  houseDisplay.classList.remove('hidden');
+  sort.style.display= "none";
+  houseDisplay.style.display= "flex";;
   switch (house) {
     case "Gryffindor":
         houseName.style.color= "red";
@@ -131,7 +131,7 @@ housePick.addEventListener('submit', saveHouse);
 function saveHouse(e) {
   e.preventDefault();
   create3.style.display = "none";
-  create4.style.display = "flex";
+  create4.style.display = "grid";
 }
 
 wandBox.addEventListener('click', pickWand);
@@ -153,8 +153,8 @@ function pickWand() {
   let wandLength = document.createElement('h3');
   wandLength.innerHTML= "Length: "+ length[index3];
   wandDisplay.appendChild(wandLength);
-  wandBox.classList.add('hidden');
-  wandDisplay.classList.remove('hidden');
+  wandBox.style.display = "none";
+  wandDisplay.style.display = "flex";
 }
 
 wandPick.addEventListener('submit', saveWand);
@@ -162,7 +162,7 @@ wandPick.addEventListener('submit', saveWand);
 function saveWand(e) {
   e.preventDefault();
   create4.style.display = "none";
-  create5.style.display = "flex";
+  create5.style.display = "grid";
 }
 
 patronusClick.addEventListener('click', pickPatronus);
@@ -179,7 +179,7 @@ function pickPatronus() {
   patronusImage.id = "patronus-image";
   patronusDisplay.appendChild(patronusImage);
   patronusClick.style.display= "none";
-  patronusDisplay.style.display="flex";
+  patronusDisplay.style.display="grid";
 }
 
 patronusPick.addEventListener('submit', savePatronus);
@@ -187,7 +187,7 @@ patronusPick.addEventListener('submit', savePatronus);
 function savePatronus(e) {
   e.preventDefault();
   create5.style.display = "none";
-  create6.style.display = "flex";
+  create6.style.display = "grid";
 }
 
 preview.addEventListener('click', previewProfile);
@@ -223,6 +223,7 @@ function previewProfile() {
   let patronusPreview = document.createElement('p');
   patronusPreview.innerHTML = `Patronus: ${patronus}`;
   profileDisplay.appendChild(patronusPreview);
+  preview.style.display = "none";
 }
 
 profileSave.addEventListener('submit', saveProfile);
