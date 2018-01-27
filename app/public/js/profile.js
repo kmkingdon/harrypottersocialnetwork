@@ -17,6 +17,7 @@ let id;
 function displayAvatar() {
   avatar.src = "../assets/avatar.jpg";
 }
+
 function findProfileName() {
   let n= window.location.href.split("?")[1];
   name= n.replace("%20", " ");
